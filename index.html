@@ -994,6 +994,24 @@ footer {
   z-index: 2;
 }
 .modal-close:hover { color: var(--red); }
+.modal-videos-portrait {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--ink);
+}
+.modal-videos-portrait video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  background: #000;
+  aspect-ratio: 9/16;
+}
+.btn-more-link {
+  display: inline-block;
+  margin-top: 24px;
+  text-decoration: none;
+}
+.btn-more-link:hover { background: var(--red); color: #fff; }
 @media (max-width: 800px) {
   .details-modal[open] {
     grid-template-columns: 1fr;
@@ -1003,6 +1021,7 @@ footer {
   .modal-map { min-height: 200px; }
   .modal-content { padding: 28px 24px 32px; max-height: none; }
   .modal-content h2 { font-size: 24px; }
+  .modal-videos-portrait video { aspect-ratio: 9/16; }
 }
 </style>
 </head>
@@ -1144,26 +1163,28 @@ footer {
       </article>
 
       <article class="track-card">
-        <div class="media placeholder">
+        <div class="media">
           <span class="num">02</span>
+          <video src="assets/videos/indoor-card.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="body">
           <div class="domain">Indoor · Image</div>
           <h3>Indoor navigation</h3>
           <p>Hallways, atriums, labs. Image-goal driven — no GPS.</p>
-          <button class="btn-more" type="button" disabled>Details coming soon</button>
+          <button class="btn-more" type="button" data-modal="indoor">More details →</button>
         </div>
       </article>
 
       <article class="track-card">
-        <div class="media placeholder">
+        <div class="media">
           <span class="num">03</span>
+          <video src="assets/videos/offroad-card.mp4" autoplay muted loop playsinline></video>
         </div>
         <div class="body">
           <div class="domain">Off-road · Image</div>
           <h3>Off-road terrain</h3>
           <p>Trails, slopes, gravel. Unstructured natural terrain.</p>
-          <button class="btn-more" type="button" disabled>Details coming soon</button>
+          <button class="btn-more" type="button" data-modal="offroad">More details →</button>
         </div>
       </article>
 
@@ -1530,6 +1551,80 @@ footer {
   </div>
 </dialog>
 
+<dialog id="indoor-modal" class="details-modal" aria-labelledby="indoor-modal-title">
+  <div class="modal-left">
+    <div class="modal-videos-portrait">
+      <video src="assets/videos/indoor-modal-1.mp4" autoplay muted loop playsinline></video>
+      <video src="assets/videos/indoor-modal-2.mp4" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+  <div class="modal-content">
+    <button type="button" class="modal-close" aria-label="Close">×</button>
+    <div class="eyebrow">Track 02 · Indoor</div>
+    <h2 id="indoor-modal-title">Indoor <em>navigation.</em></h2>
+    <p class="modal-lede">No GPS, no map. Hallways, atriums, labs — the rover must reach an image-defined goal using only its camera stream.</p>
+
+    <div class="modal-section">
+      <div class="n">01 · Goal</div>
+      <h4>Image-goal driven</h4>
+      <p>Each mission specifies the destination as a target image. The rover is judged on whether it can reach a viewpoint that matches that image, navigating only from the live camera feed.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="n">02 · Environment</div>
+      <h4>Hallways, atriums, labs</h4>
+      <p>Indoor corridors, doorways, open atriums and cluttered lab space. Glass walls, repeating textures, and reflections all break naïve visual localization — the policy has to be robust to scene-level ambiguity.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="n">03 · Difficulty rubric</div>
+      <h4>Rated 1–10 per mission</h4>
+      <p>Difficulty scales with the number of turns, scene-shift between rooms, lighting changes, and the visual distance between the goal image and the rover's starting view.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="offroad-modal" class="details-modal" aria-labelledby="offroad-modal-title">
+  <div class="modal-left">
+    <div class="modal-images">
+      <figure>
+        <img src="assets/images/offroad-1.jpg" alt="Off-road terrain — mixed rock and grass">
+        <figcaption>Unstructured terrain</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/offroad-2.jpg" alt="Heightmap reconstruction of off-road terrain with rover">
+        <figcaption>Heightmap reconstruction</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="modal-content">
+    <button type="button" class="modal-close" aria-label="Close">×</button>
+    <div class="eyebrow">Track 03 · Off-road</div>
+    <h2 id="offroad-modal-title">Off-road <em>terrain.</em></h2>
+    <p class="modal-lede">Trails, slopes, gravel, unstructured natural terrain. Image-goal driven — no GPS — over surfaces the rover was never shaped for.</p>
+
+    <div class="modal-section">
+      <div class="n">01 · Goal</div>
+      <h4>Image-goal driven</h4>
+      <p>Same as indoor: missions specify the destination as a target image. The rover navigates from camera input alone, with no GPS waypoints to fall back on.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="n">02 · Terrain</div>
+      <h4>Trails, slopes, gravel</h4>
+      <p>Unstructured natural terrain — uneven ground, varied traction, and lighting that shifts with canopy and time of day. Visual cues are sparser than in urban settings, and self-similar at a distance.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="n">03 · Difficulty rubric</div>
+      <h4>Rated 1–10 per mission</h4>
+      <p>Difficulty scales with slope, traction loss, scene self-similarity, and the visual distance between goal image and starting view. Cumulative time on shared missions is the tiebreaker.</p>
+    </div>
+
+    <a class="btn-more btn-more-link" href="https://www.youtube.com/watch?v=3La89A29Uuc" target="_blank" rel="noopener">Arena video footage →</a>
+  </div>
+</dialog>
+
 </body>
 <script>
 (function initFleetMap() {
@@ -1671,6 +1766,26 @@ footer {
   var dialog = document.getElementById('urban-modal');
   if (!dialog) return;
   document.querySelectorAll('[data-modal="urban"]').forEach(function(btn) {
+    btn.addEventListener('click', function() { dialog.showModal(); });
+  });
+  dialog.querySelector('.modal-close').addEventListener('click', function() { dialog.close(); });
+  dialog.addEventListener('click', function(e) { if (e.target === dialog) dialog.close(); });
+})();
+
+(function initIndoorModal() {
+  var dialog = document.getElementById('indoor-modal');
+  if (!dialog) return;
+  document.querySelectorAll('[data-modal="indoor"]').forEach(function(btn) {
+    btn.addEventListener('click', function() { dialog.showModal(); });
+  });
+  dialog.querySelector('.modal-close').addEventListener('click', function() { dialog.close(); });
+  dialog.addEventListener('click', function(e) { if (e.target === dialog) dialog.close(); });
+})();
+
+(function initOffroadModal() {
+  var dialog = document.getElementById('offroad-modal');
+  if (!dialog) return;
+  document.querySelectorAll('[data-modal="offroad"]').forEach(function(btn) {
     btn.addEventListener('click', function() { dialog.showModal(); });
   });
   dialog.querySelector('.modal-close').addEventListener('click', function() { dialog.close(); });
