@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://earth-rover-challenge.github.io/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://earth-rover-challenge.github.io/assets/frames/poster-1.jpg</image:loc>
+      <image:title>Earth Rover Challenge — IROS 2026</image:title>
+      <image:caption>Earth Rover Mini+ driving on a city sidewalk.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://earth-rover-challenge.github.io/assets/images/iros-group-photo.jpeg</image:loc>
+      <image:title>Earth Rover Challenge participants at IROS</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://earth-rover-challenge.github.io/assets/images/real-world.jpg</image:loc>
+      <image:title>Real-world rover evaluation across cities</image:title>
+    </image:image>
+  </url>
+</urlset>
