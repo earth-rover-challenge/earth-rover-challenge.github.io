@@ -88,8 +88,8 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "url": "https://earth-rover-challenge.github.io/#register",
+        "availability": "https://schema.org/SoldOut",
+        "url": "https://forms.gle/3wHeq48DLQqMEaTw7",
         "validFrom": "2026-01-01T00:00:00-05:00"
       },
       "organizer": [
@@ -812,6 +812,80 @@ h2.section-title em {
   letter-spacing: 0.12em;
 }
 
+/* ============ REGISTER ============ */
+.register-card {
+  background: var(--ink); color: #fff;
+  padding: 56px 48px; border-radius: 6px;
+  display: grid; grid-template-columns: 1.3fr 1fr;
+  gap: 48px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.register-card::before {
+  content: 'ERC';
+  position: absolute; right: -34px; bottom: -84px;
+  font-family: var(--sans); font-weight: 900;
+  font-size: clamp(180px, 26vw, 300px);
+  letter-spacing: -0.04em;
+  color: var(--red); opacity: 0.06; line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.register-card h3 {
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.18; color: #fff;
+  font-weight: 900; letter-spacing: -0.025em;
+  margin-bottom: 16px; max-width: 34ch;
+  position: relative; z-index: 2;
+}
+.register-card h3 em { color: var(--red); font-style: normal; font-weight: 900; }
+.register-card p {
+  font-size: 15px; line-height: 1.6; max-width: 44ch;
+  color: rgba(255,255,255,0.72);
+  position: relative; z-index: 2;
+}
+.register-cta {
+  display: inline-flex; margin-top: 28px;
+  background: var(--red);
+  position: relative; z-index: 2;
+}
+.register-cta:hover { background: #fff; color: var(--ink); }
+.badge-soon {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; margin-bottom: 20px;
+  background: rgba(225, 6, 0, 0.14);
+  border: 1px solid rgba(225, 6, 0, 0.45);
+  color: #FF6A62;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  border-radius: 999px;
+  position: relative; z-index: 2;
+}
+.badge-soon::before {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--red);
+}
+.contact-list { display: flex; flex-direction: column; position: relative; z-index: 2; }
+.contact-row {
+  display: grid; grid-template-columns: 96px 1fr;
+  gap: 16px; padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  align-items: baseline;
+  font-size: 13px; color: rgba(255,255,255,0.88);
+}
+.contact-row:first-child { border-top: 0; padding-top: 0; }
+.contact-row .k {
+  font-size: 10px; font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.contact-row .v { font-weight: 700; }
+.btn-primary.btn-disabled,
+.btn-primary:disabled,
+.btn-primary.btn-disabled:hover,
+.btn-primary:disabled:hover {
+  background: var(--paper-3); color: var(--ink-3);
+  cursor: not-allowed; pointer-events: none;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: var(--ink); color: #fff;
@@ -856,6 +930,7 @@ footer {
   .scoring-cell:first-child { border-top: 0; }
   .team-grid { grid-template-columns: repeat(3, 1fr); }
   .partners-grid .partner-card { flex: 1 1 100%; max-width: none; height: 160px; }
+  .register-card { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   nav.top ul li:not(:last-child) { display: none; }
 }
@@ -864,6 +939,10 @@ footer {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   section.block { padding: 64px 20px; }
   .hero { padding: 84px 20px 0; }
+
+  /* register */
+  .register-card { padding: 32px 22px; gap: 28px; }
+  .register-card::before { font-size: 150px; right: -20px; bottom: -46px; }
 
   /* nav */
   .nav-inner { padding: 12px 18px; }
@@ -1180,7 +1259,7 @@ footer {
       <li><a href="#hardware">Hardware</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#team">Organizers</a></li>
-      <li><a href="https://forms.gle/S4qWszRZpeNaDuZHA" target="_blank" rel="noopener"><button class="nav-cta">Register</button></a></li>
+      <li><a href="https://forms.gle/3wHeq48DLQqMEaTw7" target="_blank" rel="noopener"><button class="nav-cta">Register interest</button></a></li>
     </ul>
   </div>
 </nav>
@@ -1199,8 +1278,8 @@ footer {
         A globally distributed competition pitting autonomous policies against expert human teleoperators. Same rovers, same missions, across 10+ cities.
       </p>
       <div class="hero-cta-row">
-        <a href="https://forms.gle/S4qWszRZpeNaDuZHA" target="_blank" rel="noopener" class="btn-primary">Register your team →</a>
-        <a href="#challenge" class="btn-ghost">See the brief</a>
+        <button type="button" class="btn-primary btn-disabled" disabled aria-disabled="true">IROS26 Registrations closed</button>
+        <a href="https://forms.gle/3wHeq48DLQqMEaTw7" target="_blank" rel="noopener" class="btn-ghost">Register interest for next edition →</a>
       </div>
       <div class="hero-meta-row">
         <div class="hero-meta-item"><div class="k">Platform</div><div class="v">Earth Rover Mini+</div></div>
@@ -1584,6 +1663,36 @@ footer {
   </div>
 </section>
 
+<!-- ============ §08 — REGISTER ============ -->
+<section class="block alt" id="register">
+  <div class="block-inner">
+    <div class="section-eyebrow">Registration</div>
+    <h2 class="section-title">Registration for Round 03 is closed. Register your interest for the next edition.</h2>
+
+    <div class="register-card">
+      <div>
+        <div class="badge-soon">IROS26 Registrations closed</div>
+        <h3>
+          Registration for this edition is <em>now closed.</em>
+          Register your interest and we'll notify you when the next edition opens.
+        </h3>
+        <p>
+          Tell us about your team. We'll be in touch with SDK access, dataset links, real-world eval allocations, and the call-for-teams for the next edition.
+        </p>
+        <a href="https://forms.gle/3wHeq48DLQqMEaTw7" target="_blank" rel="noopener" class="btn-primary register-cta">Register interest for next edition →</a>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row"><span class="k">Edition</span><span class="v">Round 03 · 2026</span></div>
+        <div class="contact-row"><span class="k">Venue</span><span class="v">Pittsburgh, PA</span></div>
+        <div class="contact-row"><span class="k">Dates</span><span class="v">Sept 27 – Oct 1</span></div>
+        <div class="contact-row"><span class="k">Platform</span><span class="v">Earth Rover Mini+</span></div>
+        <div class="contact-row"><span class="k">Cost</span><span class="v">Free to enter</span></div>
+        <div class="contact-row"><span class="k">Contact</span><span class="v">michael.cho@frodobots.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="footer-inner">
@@ -1610,7 +1719,7 @@ footer {
         <li><a href="https://huggingface.co/datasets/frodobots/FrodoBots-2K" target="_blank" rel="noopener">FrodoBots-2K ↗</a></li>
         <li><a href="https://huggingface.co/datasets/frodobots/Berkeley-FrodoBots-7K" target="_blank" rel="noopener">Berkeley-FrodoBots-7K ↗</a></li>
         <li><a href="https://github.com/frodobots-org/earth-rovers-sdk" target="_blank" rel="noopener">Remote Access SDK ↗</a></li>
-        <li><a href="https://forms.gle/S4qWszRZpeNaDuZHA" target="_blank" rel="noopener">Register</a></li>
+        <li><a href="https://forms.gle/3wHeq48DLQqMEaTw7" target="_blank" rel="noopener">Register interest</a></li>
         <li><a href="mailto:michael.cho@frodobots.com">Contact</a></li>
       </ul>
     </div>
